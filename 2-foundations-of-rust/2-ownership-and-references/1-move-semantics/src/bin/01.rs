@@ -1,21 +1,17 @@
 fn main() {
-    let s0 = String::new();
+    let mut s0 = String::new(); 
 
-    let mut s1 = append_to_string(s0);
+    let s1 = append_to_string(&mut s0); 
 
-    println!("{} == `{}`", stringify!(s1), s1);
-
-    s1.push_str("!");
-
-    println!("{} == `{}`", stringify!(s1), s1);
+    println!("{} == `{}`", stringify!(s1), s1); 
+    s0.push_str("!");
+    println!("{} == `{}`", stringify!(s0), s0);
 }
 
-fn append_to_string(s: String) -> String {
-    let mut s = s;
-
+fn append_to_string(s: &mut String) -> String {
     s.push_str("Hello");
     s.push_str(" ");
     s.push_str("World");
 
-    s
+    s.clone()
 }
